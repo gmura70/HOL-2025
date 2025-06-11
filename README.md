@@ -40,10 +40,10 @@ on your laptop
 
 Edit the *.env* file,specifically focus on the following variables; get the values for these variables from your StreamSets Deployment in Control Hub
 ```
-DEPLOYMENT_ID=<your deployment id goes here>
-DEPLOYMENT_TOKEN=<your deployment token goes here>
-STREAMSETS_IMAGE=streamsets/datacollector:JDK17_6.2.0
-STREAMSETS_SCH_URL=https://eu01.hub.streamsets.com
+export DEPLOYMENT_ID=<your deployment id goes here>
+export DEPLOYMENT_TOKEN=<your deployment token goes here>
+export STREAMSETS_IMAGE=streamsets/datacollector:JDK17_6.2.0
+export STREAMSETS_SCH_URL=https://eu01.hub.streamsets.com
 ```
 
 ## 4 - Run the setup.sh file
