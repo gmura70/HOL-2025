@@ -60,5 +60,12 @@ The setup file performs the following actions
 2. creates a /data directory - this is used by the Data Collector container - SDC can then use this directory to read/write files accessible by the VM itself.
 3. executes docker compose command to run all the container required for the demo
 
+make the script executable:
+```
+chmod +x setup.sh
+./setup.sh
+```
+
+
 ## 5 - configure SingleStore
 
