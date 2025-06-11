@@ -1,4 +1,4 @@
-# HoL-2025
+# HOL-2025 (Hands on Lab 2025)
 
 ## 1 - setup the TechZone vm
 When provisionin the VM, choose a 8-core, 32GB memory configuration in order to have enough resources to run all the components required
