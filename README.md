@@ -34,11 +34,18 @@ on your laptop
 
 2.Clone the repo
 
-`git clone <. repo name goes here>`
+`git clone https://github.com/gmura70/HOL-2025/blob/main/externalResources.zip`
 
 ## 3 - Edit the .env file to configure the environment variables
 
-Specifically focus on the following variables; get the values for these variables from your StreamSets Deployment in Control Hub
+Rename the *.env* file:
+
+```
+cd HOL-2025
+mv env .env
+```
+
+Edit the *.env* file,specifically focus on the following variables; get the values for these variables from your StreamSets Deployment in Control Hub
 ```
 DEPLOYMENT_ID=<your deployment id goes here>
 DEPLOYMENT_TOKEN=<your deployment token goes here>
