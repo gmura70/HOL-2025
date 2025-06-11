@@ -38,13 +38,6 @@ on your laptop
 
 ## 3 - Edit the .env file to configure the environment variables
 
-Rename the *.env* file:
-
-```
-cd HOL-2025
-mv env .env
-```
-
 Edit the *.env* file,specifically focus on the following variables; get the values for these variables from your StreamSets Deployment in Control Hub
 ```
 DEPLOYMENT_ID=<your deployment id goes here>
@@ -55,17 +48,25 @@ STREAMSETS_SCH_URL=https://eu01.hub.streamsets.com
 
 ## 4 - Run the setup.sh file
 
-The setup file performs the following actions
-1. installs podman
+The setup file performs installs all the required software components on the VM, performing the following actions
+1. installs podman and podman-compose
 2. creates a /data directory - this is used by the Data Collector container - SDC can then use this directory to read/write files accessible by the VM itself.
 3. executes docker compose command to run all the container required for the demo
 
-make the script executable:
+make the script executable and run it:
 ```
 chmod +x setup.sh
 ./setup.sh
 ```
 
+## 5 - Create tables in SingleStore
 
-## 5 - configure SingleStore
+The run_sql_script.sh creates the required tables in singlestore database.
+
+make the script executable and run it:
+```
+chmod +x run_sql_script.sh
+./run_sql_script.sh
+```
+
 
