@@ -1,0 +1,73 @@
+version: "3.8"
+
+services:
+  singlestoredb:
+    image: ghcr.io/singlestore-labs/singlestoredb-dev:latest
+    container_name: singlestoredb
+    networks:
+      - hol
+    ports:
+      - "3306:3306"
+      - "8080:8080"
+      - "9000:9000"
+    environment:
+      ROOT_PASSWORD: "${ROOT_PASSWORD:-my-password}"
+
+  elasticsearch:
+    image: docker.io/library/elasticsearch:8.17.2
+    container_name: elasticsearch
+    networks:
+      - hol
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+
+  kibana:
+    image: docker.io/library/kibana:8.17.2
+    container_name: kibana
+    networks:
+      - hol
+    ports:
+      - "5601:5601"
+
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:latest
+    container_name: zookeeper
+    networks:
+      - hol
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+
+  kafka:
+    image: docker.io/bitnami/kafka:3.9.0
+    container_name: kafka
+    networks:
+      - hol
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: PLAINTEXT://:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+
+  sdc62:
+    image: "${STREAMSETS_IMAGE:-docker.io/streamsets/datacollector:JDK17_6.2.0}"
+    container_name: sdc62
+    networks:
+      - hol
+    volumes:
+      - "./data:/demodata"
+    environment:
+      STREAMSETS_DEPLOYMENT_SCH_URL: "${STREAMSETS_SCH_URL:-https://eu01.hub.streamsets.com}"
+      STREAMSETS_DEPLOYMENT_ID: "${DEPLOYMENT_ID:-your-deployment-id}"
+      STREAMSETS_DEPLOYMENT_TOKEN: "${DEPLOYMENT_TOKEN:-your-deployment-token}"
+
+networks:
+  hol:
+    name: hol
