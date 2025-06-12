@@ -1,6 +1,6 @@
 # HOL-2025 (Hands on Lab 2025)
 
-## 1 - setup the TechZone vm
+## 1 - Set up the TechZone vm
 When provisionin the VM, choose a 8-core, 32GB memory configuration in order to have enough resources to run all the components required
 
 Use this base image: https://techzone.ibm.com/my/reservations/ibmcloud-2/680a68790b3f018ca424cac7
