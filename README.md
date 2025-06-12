@@ -34,7 +34,7 @@ on your laptop
 
 2.Clone the repo
 
-`git clone https://github.com/gmura70/HOL-2025/blob/main/externalResources.zip`
+`git clone https://github.com/gmura70/HOL-2025`
 
 ## 3 - Edit the .env file to configure the environment variables
 
