@@ -48,7 +48,6 @@ confirm_or_override DEPLOYMENT_ID "$DEPLOYMENT_ID"
 confirm_or_override DEPLOYMENT_TOKEN "$DEPLOYMENT_TOKEN"
 confirm_or_override STREAMSETS_IMAGE "$STREAMSETS_IMAGE"
 confirm_or_override STREAMSETS_SCH_URL "$STREAMSETS_SCH_URL"
-confirm_or_override ROOT_PASSWORD = "$ROOT_PASSWORD"
 
 # Resolve docker-compose path (assumed to be in same dir as script)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
