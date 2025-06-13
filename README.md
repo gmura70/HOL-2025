@@ -40,6 +40,10 @@ LocalForward 5601 localhost:5601
 LocalForward 9200 localhost:9200
 LocalForward 18630 localhost:18630
 ```
+
+**Note - the port forwarding is required as the TechZone VMs are configured to not expose any ports other than the SSH one!**
+
+
 ## 2 - Clone this repo
 
 Download this repo to your laptop's hard drive or clone the repo via the git command line 
