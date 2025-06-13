@@ -30,7 +30,11 @@ fi
 
 # Install Podman Compose (if not already installed)
 if ! command -v podman-compose &> /dev/null; then
-  sudo dnf install -y podman-compose >> setupOnTZ.log 2>&1
+  #sudo dnf install -y podman-compose >> setupOnTZ.log 2>&1
+  sudo dnf install -y python3 python3-pip  >> setupOnTZ.log 2>&1
+  pip3 install --user podman-compose  >> setupOnTZ.log 2>&1
+  echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc
+  source ~/.bashrc
 else
 echo "Podman Compose already installed." >> setupOnTZ.log
 fi
