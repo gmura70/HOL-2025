@@ -7,6 +7,8 @@ Use this link to create a reservation of the **Environment RHEL 9 IBMCloud VSI (
 
 https://techzone.ibm.com/my/reservations/create/62ab7e6c79c3250017398d8b
 
+Choose a deployment zone that makes sense to you - typically this would be close to where your Control Hub is, but take into account the location of any external sources/targets that you might want to add to the Lab environment and that are not contained in this VM (e.g. Snowflake, Databricks, etc.).
+
 Once the VM is up and running follow these steps:
 
 1. download the SSH key to your laptop and store it in ~/.ssh/ directory (by default its name is pem_ibmcloudvsi_download.pem)
