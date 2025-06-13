@@ -53,9 +53,7 @@ git clone https://github.com/gmura70/HOL-2025
 ```
 Note: this assumes you have git command line installed; if you haven't proceed to install it as per your OS's standard install of git cli.
 
-Also note: this repo contain the file **externalResources.zip** - this is referenced by the StreamSets Data Collector in the org used by the Lab and it contains required libraries (e.g. the SingleStore JDBC library):
 
-<img width="1281" alt="image" src="https://github.com/user-attachments/assets/f802a2c8-e4ba-417a-8be6-c850f7d887a0" />
 
 ## 3 - Edit the .env file to configure the environment variables
 
@@ -111,4 +109,9 @@ ssh rhel
 podman-compose down
 ```
 
+## 6 - Appendix
+
+**Note:** this repo contain the file **externalResources.zip** - this is referenced by the StreamSets Data Collector in the org used by the Lab and it contains required libraries (e.g. the SingleStore JDBC library):
+
+<img width="1281" alt="image" src="https://github.com/user-attachments/assets/f802a2c8-e4ba-417a-8be6-c850f7d887a0" />
 
