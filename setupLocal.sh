@@ -87,17 +87,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Run the script remotely with environment exports
-echo "🧪 Executing script on $REMOTE_HOST..."
-
-echo "✅ Current configuration:"
-echo "SSH_KEY_PATH = $SSH_KEY_PATH"
-echo "SSH_PORT = $SSH_PORT"
-echo "REMOTE_HOST = $REMOTE_HOST"
-echo "REMOTE_USER = $REMOTE_USER"
-echo "LOCAL_SCRIPT_PATH = $LOCAL_SCRIPT_PATH"
-echo "REMOTE_SCRIPT_PATH = $REMOTE_SCRIPT_PATH"
-echo "ROOT_PASSWORD = $ROOT_PASSWORD"
-
+echo "🧪 Executing script on $REMOTE_HOST, please wait for a while - lots going on there..."
 
 ssh -p "$SSH_PORT" -i "$SSH_KEY_PATH" "$REMOTE_USER@$REMOTE_HOST" bash -c "'
     export DEPLOYMENT_ID=\"$DEPLOYMENT_ID\"
