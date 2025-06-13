@@ -27,7 +27,7 @@ Make the SSH key read/write only to you:
 chmod 600 ~/.ssh/pem_ibmcloudvsi_download.pem
 ```
    
-3. edit your ~/.ssh/config file and add the following lines:
+2. edit your ~/.ssh/config file and add the following lines:
 ```
 # simple connection to TechZone VM
 Host rhel
