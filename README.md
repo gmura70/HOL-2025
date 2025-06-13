@@ -3,7 +3,9 @@
 ## 1 - Set up the TechZone vm
 When provisionin the VM, choose a 8-core, 32GB memory configuration in order to have enough resources to run all the components required
 
-Use this base image: https://techzone.ibm.com/my/reservations/ibmcloud-2/680a68790b3f018ca424cac7
+Use this link to create a reservation of the **Environment RHEL 9 IBMCloud VSI (VPC)** base image: 
+
+https://techzone.ibm.com/my/reservations/create/62ab7e6c79c3250017398d8b
 
 Once the VM is up and running follow these steps:
 
