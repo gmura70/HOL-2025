@@ -20,7 +20,14 @@ Choose a deployment zone that makes sense to you - typically this would be close
 Once the VM is up and running follow these steps:
 
 1. download the SSH key to your laptop and store it in ~/.ssh/ directory (by default its name is pem_ibmcloudvsi_download.pem)
-2. edit your ~/.ssh/config file and add the following lines:
+
+Make the SSH key read/write only to you:
+
+```
+chmod 600 ~/.ssh/pem_ibmcloudvsi_download.pem
+```
+   
+3. edit your ~/.ssh/config file and add the following lines:
 ```
 # simple connection to TechZone VM
 Host rhel
