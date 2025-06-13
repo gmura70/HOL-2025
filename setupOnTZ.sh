@@ -13,7 +13,7 @@ echo "REMOTE_SCRIPT_PATH = $REMOTE_SCRIPT_PATH" >> setupOnTZ.log
 echo "ROOT_PASSWORD = $ROOT_PASSWORD" >> setupOnTZ.log
 
 # Database login details
-ROOT_PASSWORD="${ROOT_PASSWORD:-my-password}"
+export ROOT_PASSWORD="${ROOT_PASSWORD:-my-password}"
 CONTAINER_NAME="singlestoredb"
 
 # --- Install Podman and Podman Compose ---
