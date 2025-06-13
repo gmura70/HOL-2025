@@ -69,7 +69,7 @@ The setup file performs installation of all the required software components on 
 Make the script executable and run it:
 ```
 chmod +x setup.sh
-./setup.sh
+./setupLocal.sh
 ```
 
 once that's completed successfully you can open a ssh session with port forwarding to the VM and then test that e.g. Singlestore or Elastic are running properly:
