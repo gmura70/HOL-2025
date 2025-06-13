@@ -40,7 +40,7 @@ if [[ "$confirm" =~ ^[Nn] ]]; then
     confirm_or_override REMOTE_USER "$REMOTE_USER"
     confirm_or_override LOCAL_SCRIPT_PATH "$LOCAL_SCRIPT_PATH"
     confirm_or_override REMOTE_SCRIPT_PATH "$REMOTE_SCRIPT_PATH"
-    confirm_or_override ROOT_PASSWORD = "$ROOT_PASSWORD"
+    confirm_or_override ROOT_PASSWORD "$ROOT_PASSWORD"
 fi
 
 # Confirm or override environment variables
