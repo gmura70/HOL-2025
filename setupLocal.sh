@@ -43,6 +43,9 @@ if [[ "$confirm" =~ ^[Nn] ]]; then
     confirm_or_override ROOT_PASSWORD "$ROOT_PASSWORD"
 fi
 
+echo ""
+echo "Confirm STREAMSETS specific variables"
+
 # Confirm or override environment variables
 confirm_or_override DEPLOYMENT_ID "$DEPLOYMENT_ID"
 confirm_or_override DEPLOYMENT_TOKEN "$DEPLOYMENT_TOKEN"
