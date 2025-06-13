@@ -85,7 +85,7 @@ Kibana: http://localhost:5601/app/home#/
 
 ## 5 - Troubleshooting
 
-On the TZ machine you'll find a log file in the itzuser home directory (setupOnTXZ.log) which will give you an indication of what's been executed and of anything that might have gone wrong.
+On the TZ machine you'll find a log file in the itzuser home directory (setupOnTZ.log) which will give you an indication of what's been executed and of anything that might have gone wrong.
 
 
 Should you need to clean up the VM, assuming you've set up your .ssh/config file as described in section 1, do the following:
