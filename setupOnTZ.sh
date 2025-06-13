@@ -19,6 +19,8 @@ CONTAINER_NAME="singlestoredb"
 # --- Install Podman and Podman Compose ---
 echo "Installing Podman and Podman Compose..." >> setupOnTZ.log
 
+sudo dnf update -y >> setupOnTZ.log 2>&1
+
 # Install Podman (if not already installed)
 if ! command -v podman &> /dev/null; then
   sudo dnf install -y podman >> setupOnTZ.log 2>&1
