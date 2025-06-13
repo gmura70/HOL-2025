@@ -82,7 +82,7 @@ The setup file performs installation of all the required software components on 
 
 Make the script executable and run it:
 ```
-chmod +x setup.sh
+chmod +x setupLocal.sh
 ./setupLocal.sh
 ```
 
