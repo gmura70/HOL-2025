@@ -21,14 +21,14 @@ echo "Installing Podman and Podman Compose..." >> setupOnTZ.log
 
 # Install Podman (if not already installed)
 if ! command -v podman &> /dev/null; then
-  sudo dnf install -y podman
+  sudo dnf install -y podman >> setupOnTZ.log 2>&1
 else
 echo "Podman already installed." >> setupOnTZ.log
 fi
 
 # Install Podman Compose (if not already installed)
 if ! command -v podman-compose &> /dev/null; then
-  sudo dnf install -y podman-compose
+  sudo dnf install -y podman-compose >> setupOnTZ.log 2>&1
 else
 echo "Podman Compose already installed." >> setupOnTZ.log
 fi
