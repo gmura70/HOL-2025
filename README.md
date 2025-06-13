@@ -1,5 +1,13 @@
 # HOL-2025 (Hands on Lab 2025)
 
+These repo provides a quick and automated way of provisioning a data plane for the running of a Hands on Labs session as documented in the **StreamSets Hands on Lab Guide**
+
+At this time (13 June 2025) the lab exercise walk the attendees through setting up some simple pipelines which use service / resources that are all self contained in the data plane environment (the TechZone VM)
+
+**TODO: Automation of the build of control plane components (Deployment, Sample pipelines)**
+
+For now, the setup of the Control Plane is assumed to be done already, i.e. an Org exists in a Control Hub and we have an extant Deployment and sample/initialisation pipelines available.
+
 ## 1 - Set up the TechZone vm
 When provisionin the VM, choose a 8-core, 32GB memory configuration in order to have enough resources to run all the components required
 
