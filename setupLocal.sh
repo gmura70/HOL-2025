@@ -147,3 +147,23 @@ else
   cat /tmp/kibana_response.txt
 fi
 
+echo ""
+read -p "🛑 Type STOP to deactivate the SSH tunnel on port 15601 (or press Enter to skip): " user_input
+
+if [[ "$user_input" == "STOP" ]]; then
+    echo "🔻 Shutting down SSH tunnel on port 15601..."
+
+    # Find and kill all SSH processes using local port 15601
+    TUNNEL_PIDS=$(lsof -i TCP:15601 -sTCP:LISTEN -t)
+
+    if [[ -n "$TUNNEL_PIDS" ]]; then
+        echo "🔍 Found tunnel processes: $TUNNEL_PIDS"
+        kill $TUNNEL_PIDS
+        echo "✅ Tunnel(s) on port 15601 terminated."
+    else
+        echo "ℹ️ No SSH tunnel found on port 15601."
+    fi
+else
+    echo "⏳ SSH tunnel remains active. You can stop it manually later if needed."
+fi
+
