@@ -80,7 +80,6 @@ echo ""
 echo "📦 Copying files to $REMOTE_USER@$REMOTE_HOST on port $SSH_PORT..."
 scp -P "$SSH_PORT" -i "$SSH_KEY_PATH" "$LOCAL_SCRIPT_PATH" "$REMOTE_USER@$REMOTE_HOST:$REMOTE_SCRIPT_PATH"
 scp -P "$SSH_PORT" -i "$SSH_KEY_PATH" "$DOCKER_COMPOSE_FILE" "$REMOTE_USER@$REMOTE_HOST:$REMOTE_COMPOSE_PATH"
-scp -P "$SSH_PORT" -i "$SSH_KEY_PATH" "$KIBANA_DASHBOARD_FILE" "$REMOTE_USER@$REMOTE_HOST:$REMOTE_KIBANA_DASHBOARD_PATH"
 
 if [ $? -ne 0 ]; then
     echo "❌ Failed to copy one or more files."
