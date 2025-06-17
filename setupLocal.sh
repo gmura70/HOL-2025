@@ -80,6 +80,7 @@ echo ""
 echo "📦 Copying files to $REMOTE_USER@$REMOTE_HOST on port $SSH_PORT..."
 scp -P "$SSH_PORT" -i "$SSH_KEY_PATH" "$LOCAL_SCRIPT_PATH" "$REMOTE_USER@$REMOTE_HOST:$REMOTE_SCRIPT_PATH"
 scp -P "$SSH_PORT" -i "$SSH_KEY_PATH" "$DOCKER_COMPOSE_FILE" "$REMOTE_USER@$REMOTE_HOST:$REMOTE_COMPOSE_PATH"
+scp -P "$SSH_PORT" -i "$SSH_KEY_PATH" "$KIBANA_DASHBOARD_FILE" "$REMOTE_USER@$REMOTE_HOST:$REMOTE_KIBANA_DASHBOARD_PATH"
 
 if [ $? -ne 0 ]; then
     echo "❌ Failed to copy one or more files."
@@ -103,4 +104,37 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo "✅ Script and docker-compose.yml copied and executed successfully."
+
+# Kibana dashboard path
+KIBANA_DASHBOARD_FILE="$SCRIPT_DIR/kibana/export.ndjson"
+
+echo ""
+echo "🔐 Creating SSH tunnel to forward Kibana port from remote host..."
+
+# Start SSH port forwarding in background (local 15601 -> remote 5601)
+ssh -f -N -L 15601:localhost:5601 -i "$SSH_KEY_PATH" "$REMOTE_USER@$REMOTE_HOST"
+
+# Wait until Kibana on the remote host is ready
+echo "⏳ Waiting for Kibana to be ready through the tunnel..."
+
+until curl -s "http://localhost:15601/api/status" | grep -q '"state":"green"'; do
+  echo "🔄 Kibana is not ready yet... retrying in 5s"
+  sleep 5
+done
+
+echo "✅ Kibana is up. Importing dashboard..."
+
+# Import the dashboard via forwarded port
+response=$(curl -s -w "%{http_code}" -o /tmp/kibana_response.txt -X POST "http://localhost:15601/api/saved_objects/_import?overwrite=true" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@$KIBANA_DASHBOARD_FILE")
+
+if [[ "$response" == "200" || "$response" == "201" ]]; then
+  echo "✅ Dashboard imported successfully."
+else
+  echo "❌ Dashboard import failed. HTTP status: $response"
+  echo "📄 Kibana response:"
+  cat /tmp/kibana_response.txt
+fi
+
