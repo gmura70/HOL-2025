@@ -111,15 +111,25 @@ echo ""
 echo "🔐 Creating SSH tunnel to forward Kibana port from remote host..."
 
 # Start SSH port forwarding in background (local 15601 -> remote 5601)
-ssh -f -N -L 15601:localhost:5601 -i "$SSH_KEY_PATH" "$REMOTE_USER@$REMOTE_HOST"
+ssh -f -N -L 15601:localhost:5601 -p 2223 -i "$SSH_KEY_PATH" "$REMOTE_USER@$REMOTE_HOST"
 
 # Wait until Kibana on the remote host is ready
 echo "⏳ Waiting for Kibana to be ready through the tunnel..."
 
-until curl -s "http://localhost:15601/api/status" | grep -q '"state":"green"'; do
-  echo "🔄 Kibana is not ready yet... retrying in 5s"
-  sleep 5
+#!/bin/bash
+
+RETRIES=50
+until curl -s http://localhost:15601/api/status | jq -e '.status.overall.level == "available"' > /dev/null; do
+  echo "Waiting for Kibana to be ready..."
+  sleep 10
+  ((RETRIES--))
+  if [[ $RETRIES -le 0 ]]; then
+    echo "Kibana did not become ready in time"
+    exit 1
+  fi
 done
+
+echo "✅ Kibana is ready"
 
 echo "✅ Kibana is up. Importing dashboard..."
 
