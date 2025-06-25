@@ -49,6 +49,18 @@ else
 echo "/data directory already exists." >> setupOnTZ.log
 fi
 
+# --- Create /data/postgresdata Directory ---
+POSTGRES_DATA_DIR="/data/postgresdata"
+if [ ! -d "$POSTGRES_DATA_DIR" ]; then
+echo "Creating /data directory..." >> setupOnTZ.log
+  sudo mkdir -p "$POSTGRES_DATA_DIR"
+  sudo chown $(whoami):$(whoami) "$POSTGRES_DATA_DIR"
+else
+echo $POSTGRES_DATA_DIR " directory already exists." >> setupOnTZ.log
+fi
+
+/data/postgresdata
+
 # --- Run Podman Compose ---
 echo "Starting containers using Podman Compose..." >> setupOnTZ.log
 podman-compose up -d
